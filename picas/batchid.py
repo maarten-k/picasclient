@@ -23,7 +23,7 @@ def add_batch_management_id(doc):
     elif pbs_jobid is not None:
         doc["pbs_job_id"] = pbs_jobid
     elif slurm_jobid is not None:
-        doc["slurm_jobid"] = slurm_jobid
+        doc["slurm_job_id"] = slurm_jobid
 
 
 def remove_batch_management_id(doc):
@@ -36,3 +36,5 @@ def remove_batch_management_id(doc):
         del doc["cream_job_id"]
     if "pbs_job_id" in doc:
         del doc["pbs_job_id"]
+    if "slurm_job_id" in doc:
+        del doc["slurm_job_id"]
