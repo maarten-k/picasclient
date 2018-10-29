@@ -15,14 +15,15 @@ def add_batch_management_id(doc):
     wms_jobid = environ.get("GLITE_WMS_JOBID")
     cream_jobid = environ.get("CREAM_JOBID")
     pbs_jobid = environ.get("PBS_JOBID")
-    if wms_jobid is not None:
-        if not wms_jobid.startswith("http"):
-            wms_jobid = None
+    slurm_jobid = environ.get("SLURM_JOBID")
+    if str(wms_jobid).startswith("http"):
         doc["wms_job_id"] = wms_jobid
     elif cream_jobid is not None:
         doc["cream_job_id"] = cream_jobid
     elif pbs_jobid is not None:
         doc["pbs_job_id"] = pbs_jobid
+    elif slurm_jobid is not None:
+        doc["slurm_jobid"] = slurm_jobid
 
 
 def remove_batch_management_id(doc):
